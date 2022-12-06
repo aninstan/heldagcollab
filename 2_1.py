@@ -1,3 +1,4 @@
+# %%
 import matplotlib.pyplot as plt
 from pathlib import Path
 import csv
@@ -23,4 +24,7 @@ with open(Path(__file__).parent / "Befolkning.csv", "r", encoding="utf-8-sig") a
 
 
 plt.plot(year, population)
+plt.xlabel("År")
+plt.ylabel("Befolkning (millioner)")
 plt.show()
+
