@@ -12,7 +12,7 @@ with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as f
     for i in data["dimension"]["Tid"]["category"]["label"]:
         x.append(int(i))
 
-    width = 0.20
+    width = 0.30
     xvals = arange(len(x))
 
     print(len(data["value"]))
@@ -38,9 +38,10 @@ with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as f
                 else: 
                     y.append(0)
 
-            rect1 = axs[gender_val].bar(xvals - width/2, y, width, label=ekteskap_status_label)
-            rect2 = axs[gender_val].bar(xvals + width/2, y, width, label=ekteskap_status_label)
-
+            #fig, ax = plt.subplots()
+            rect1 = axs[gender_val].bar(xvals - width, y, width, label=ekteskap_status_label)
+            #rect2 = ax.bar(xvals + width/2, y, width, label=ekteskap_status_label)
+        
             axs[gender_val].legend(loc='upper left')
             
             fig.tight_layout()
