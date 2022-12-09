@@ -1,8 +1,8 @@
-from pylab import *
+import matplotlib.pyplot as plt
 from pathlib import Path
 import json
 
-fig, axs = subplots(1, 5, figsize=(10, 2), sharey=True)
+fig, axs = plt.subplots(1, 5, figsize=(10, 5), sharey=True)
 
 
 with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as file:    
@@ -37,4 +37,4 @@ with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as f
         axs[ekteskap_status_val].legend(loc='upper left')
 
 
-show()
+plt.show()

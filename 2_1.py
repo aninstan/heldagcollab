@@ -1,4 +1,4 @@
-from pylab import *
+import matplotlib.pyplot as plt
 from pathlib import Path
 import csv
 
@@ -18,9 +18,10 @@ with open(Path(__file__).parent / "Befolkning.csv", "r", encoding="utf-8-sig") a
         year.append(int(row[0]))
         population.append(int(row[1]))
 
-    plot(year, population)
-    title("Befolkning i Norge")
-    xlabel("År")
-    ylabel("Befolkning (millioner)")
+    plt.plot(year, population)
+    plt.title("Befolkning i Norge")
+    plt.xlabel("År")
+    plt.ylabel("Befolkning (millioner)")
 
-    show()
+
+plt.show()

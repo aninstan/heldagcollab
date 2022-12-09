@@ -1,8 +1,8 @@
-from pylab import *
+import matplotlib.pyplot as plt
 from pathlib import Path
 import json
 
-fig, axs = subplots(1, 3, figsize=(10, 2), sharey=True)
+fig, axs = plt.subplots(1, 3, figsize=(10, 5), sharey=True)
 
 
 with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as file:
@@ -12,8 +12,6 @@ with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as f
 
     for i in data["dimension"]["Tid"]["category"]["label"]:
         x.append(int(i))
-
-    print(len(data["value"]))
 
     for gender_key, gender_val in data["dimension"]["Kjonn"]["category"]["index"].items():
 
@@ -36,4 +34,4 @@ with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as f
             axs[gender_val].legend(loc='upper left')
 
 
-show()
+plt.show()

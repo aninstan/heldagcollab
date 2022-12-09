@@ -1,5 +1,6 @@
+import matplotlib.pyplot as plt
 from pathlib import Path
-from pylab import *
+import numpy as np
 import csv
 
 
@@ -25,16 +26,17 @@ with open(Path(__file__).parent / "Skilsmisser og ekteskap.csv", "r", encoding="
     barWidth = 1/len(fieldnames)
 
     # Set position of bar on X axis
-    br1 = arange(len(data[0]))
+    br1 = np.arange(len(data[0]))
     br2 = [x + barWidth for x in br1]
 
     # Make the plot
-    bar(br1, data[1], color ='r', width = barWidth, edgecolor ='grey', label=fieldnames[1])
-    bar(br2, data[2], color ='g', width = barWidth, edgecolor ='grey', label=fieldnames[2])
+    plt.bar(br1, data[1], color ='r', width = barWidth, edgecolor ='grey', label=fieldnames[1])
+    plt.bar(br2, data[2], color ='g', width = barWidth, edgecolor ='grey', label=fieldnames[2])
 
 
-    xticks(br1 + barWidth/2, data[0])
+    plt.xticks(br1 + barWidth/2, data[0])
 
-    legend()
-    show()
+    plt.legend(loc='upper left')
 
+
+plt.show()

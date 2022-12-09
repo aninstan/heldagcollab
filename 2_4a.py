@@ -1,8 +1,10 @@
-from pylab import *
+import matplotlib.pyplot as plt
 from pathlib import Path
+import numpy as np
 import json
 
-fig, axs = subplots(1, 3, figsize=(10, 2), sharey=True)
+fig, axs = plt.subplots(1, 3, figsize=(10, 5), sharey=True)
+
 
 with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as file:
     data = json.load(file)["dataset"]
@@ -13,9 +15,7 @@ with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as f
         x.append(int(i))
 
     width = 0.30
-    xvals = arange(len(x))
-
-    print(len(data["value"]))
+    xvals = np.arange(len(x))
 
     for gender_key, gender_val in data["dimension"]["Kjonn"]["category"]["index"].items():
 
@@ -38,12 +38,11 @@ with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as f
                 else: 
                     y.append(0)
 
-            #fig, ax = plt.subplots()
             rect1 = axs[gender_val].bar(xvals - width, y, width, label=ekteskap_status_label)
-            #rect2 = ax.bar(xvals + width/2, y, width, label=ekteskap_status_label)
         
             axs[gender_val].legend(loc='upper left')
             
             fig.tight_layout()
 
-show()
+
+plt.show()

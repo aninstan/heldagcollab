@@ -1,10 +1,9 @@
-from pylab import *
+import matplotlib.pyplot as plt
 from pathlib import Path
 import json
 import csv
 
-
-fig, axs = subplots(1, 6, figsize=(10, 2), sharey=True)
+fig, axs = plt.subplots(1, 6, figsize=(10, 5), sharey=True)
 
 
 with open(Path(__file__).parent / "Befolkning.csv", "r", encoding="utf-8-sig") as file:
@@ -59,4 +58,4 @@ with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as f
         axs[ekteskap_status_val + 1].legend(loc='upper left')
 
 
-show()
+plt.show()
