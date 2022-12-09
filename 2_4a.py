@@ -17,15 +17,19 @@ with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as f
     width = 0.30
     xvals = np.arange(len(x))
 
+    # Loop through all genders
     for gender_key, gender_val in data["dimension"]["Kjonn"]["category"]["index"].items():
 
+        # Get gender label
         gender_label = data["dimension"]["Kjonn"]["category"]["label"][gender_key]
         axs[gender_val].set_title(gender_label)
 
         gender_index_start = gender_val*len(x)*len(data["dimension"]["EkteskStatus"]["category"]["label"])
 
+        # Loop through all statuses
         for ekteskap_status_key, ekteskap_status_val in [["2", 1], ["4", 4]]:
 
+            # Get status label
             ekteskap_status_label = data["dimension"]["EkteskStatus"]["category"]["label"][ekteskap_status_key]
             ekteskap_status_index_start = len(x)*ekteskap_status_val
             

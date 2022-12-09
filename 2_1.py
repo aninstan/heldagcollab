@@ -11,6 +11,7 @@ with open(Path(__file__).parent / "Befolkning.csv", "r", encoding="utf-8-sig") a
 
     data = csv.reader(file, delimiter=";")
 
+    # First three rows contain no usefull information
     for i in range(3):
         next(data)
 
