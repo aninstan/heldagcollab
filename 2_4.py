@@ -4,7 +4,6 @@ import json
 
 fig, axs = subplots(1, 3, figsize=(10, 2), sharey=True)
 
-
 with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as file:
     data = json.load(file)["dataset"]
 
@@ -12,6 +11,9 @@ with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as f
 
     for i in data["dimension"]["Tid"]["category"]["label"]:
         x.append(int(i))
+
+    width = 0.20
+    xvals = arange(len(x))
 
     print(len(data["value"]))
 
@@ -30,12 +32,17 @@ with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as f
             y = []
 
             for k, v in data["dimension"]["Tid"]["category"]["index"].items():
-                y.append(data["value"][gender_index_start + ekteskap_status_index_start + v])
+                h = data["value"][gender_index_start + ekteskap_status_index_start + v]
+                if (h != None):
+                    y.append(h)
+                else: 
+                    y.append(0)
 
-            axs[gender_val].plot(x, y, label=ekteskap_status_label)
+            rect1 = axs[gender_val].bar(xvals - width/2, y, width, label=ekteskap_status_label)
+            rect2 = axs[gender_val].bar(xvals + width/2, y, width, label=ekteskap_status_label)
+
             axs[gender_val].legend(loc='upper left')
-
             
-
+            fig.tight_layout()
 
 show()
