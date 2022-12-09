@@ -5,7 +5,7 @@ import json
 fig, axs = subplots(1, 5, figsize=(10, 2), sharey=True)
 
 
-with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as file:
+with open(Path(__file__).parent / "Sivilstand.json", "r", encoding="utf-8") as file:    
     data = json.load(file)["dataset"]
 
     x = []
